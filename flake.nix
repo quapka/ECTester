@@ -98,7 +98,20 @@
           popd
          '';
 
+         buildMbedTLS = ''
+           python -m venv virt
+           . virt/bin/activate
+           pip install -r scripts/basic.requirements.txt
+           cmake -GNinja -Bbuild -DUSE_SHARED_MBEDTLS_LIBRARY=On
+           cd build
+           ninja
+         '';
+
         # shellHook = ''
+        #   pushd ext/mbedtls
+        #   ${buildMbedTLS}
+        #   popd
+        # '';
         #   git submodule update --init --recursive
 
         #   pushd ext/boringssl
