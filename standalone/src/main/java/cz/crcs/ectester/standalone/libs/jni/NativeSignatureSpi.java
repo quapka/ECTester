@@ -351,6 +351,27 @@ public abstract class NativeSignatureSpi extends SignatureSpi {
         }
     }
 
+    public abstract static class TropicSquare extends SimpleSignatureSpi {
+        private final String type;
+
+        public TropicSquare(String type) {
+            this.type = type;
+        }
+
+        @Override
+        native byte[] sign(byte[] data, byte[] privkey, ECParameterSpec params);
+
+        @Override
+        native boolean verify(byte[] signature, byte[] data, byte[] pubkey, ECParameterSpec params);
+    }
+
+    public static class TropicSquareECDSAwithNONE extends TropicSquare {
+
+        public TropicSquareECDSAwithNONE() {
+            super("NONEwithECDSA");
+        }
+    }
+
     public abstract static class Gcrypt extends SimpleSignatureSpi {
         private final String type;
 

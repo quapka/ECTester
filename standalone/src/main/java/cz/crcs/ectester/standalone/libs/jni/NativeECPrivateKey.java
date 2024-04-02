@@ -99,6 +99,13 @@ public abstract class NativeECPrivateKey implements ECPrivateKey {
     }
 
     @SuppressWarnings("serial")
+    public static class TropicSquare extends Raw {
+        public TropicSquare(byte[] keyData, ECParameterSpec params) {
+            super(keyData, params);
+        }
+    }
+
+    @SuppressWarnings("serial")
     public static class Gcrypt extends Raw {
         public Gcrypt(byte[] keyData, ECParameterSpec params) {
             super(keyData, params);

@@ -100,6 +100,13 @@ public abstract class NativeECPublicKey implements ECPublicKey {
     }
 
     @SuppressWarnings("serial")
+    public static class TropicSquare extends ANSIX962 {
+        public TropicSquare(byte[] keyData, ECParameterSpec params) {
+            super(keyData, params);
+        }
+    }
+
+    @SuppressWarnings("serial")
     public static class Gcrypt extends ANSIX962 {
         public Gcrypt(byte[] keyData, ECParameterSpec params) {
             super(keyData, params);

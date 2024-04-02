@@ -81,6 +81,17 @@ public abstract class NativeProvider extends Provider {
     }
 
     @SuppressWarnings("serial")
+    public static class TropicSquare extends NativeProvider {
+
+        public TropicSquare(String name, double version, String info) {
+            super(name, version, info);
+        }
+
+        @Override
+        native void setup();
+    }
+
+    @SuppressWarnings("serial")
     public static class Gcrypt extends NativeProvider {
 
         public Gcrypt(String name, double version, String info) {

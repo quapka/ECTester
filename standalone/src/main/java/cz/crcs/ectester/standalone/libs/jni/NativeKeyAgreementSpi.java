@@ -255,6 +255,26 @@ public abstract class NativeKeyAgreementSpi extends KeyAgreementSpi {
         }
     }
 
+    public abstract static class TropicSquare extends SimpleKeyAgreementSpi {
+        private final String type;
+
+        public TropicSquare(String type) {
+            this.type = type;
+        }
+
+        @Override
+        native byte[] generateSecret(byte[] pubkey, byte[] privkey, ECParameterSpec params);
+
+        @Override
+        native SecretKey generateSecret(byte[] pubkey, byte[] privkey, ECParameterSpec params, String algorithm);
+    }
+
+    public static class TropicSquareECDH extends TropicSquare {
+        public TropicSquareECDH() {
+            super("ECDH");
+        }
+    }
+
     public abstract static class Gcrypt extends SimpleKeyAgreementSpi {
         private final String type;
 
