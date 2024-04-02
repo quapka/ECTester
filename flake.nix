@@ -64,6 +64,7 @@
           LD_LIBRARY_PATH = with pkgs; pkgs.lib.makeLibraryPath [
             libtomcrypt
             cryptopp
+            nettle
           ];
 
           # NOTE: Mixing postVenvCreation aznd shellHook results in only shellHook being called
