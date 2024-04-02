@@ -29,6 +29,7 @@
             jdk11
             pkg-config
             global-platform-pro
+            gradle
             # libraries to test
             openssl
             boringssl
