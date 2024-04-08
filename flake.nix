@@ -101,6 +101,11 @@
           popd
         '';
 
+        # TODO OpenJDK 64-Bit Server VM warning: You have loaded library
+        # /home/qup/.local/share/ECTesterStandalone/lib/lib_ippcp.so which
+        # might have disabled stack guard. The VM will try to fix the stack
+        # guard now. It's highly recommended that you fix the library with
+        # 'execstack -c <libfile>', or link it with '-z noexecstack'.
         buildIppCrypto = ''
           CC=clang CXX=clang++ cmake CMakeLists.txt -GNinja -Bbuild -DARCH=intel64  # Does not work with GCC 12+
           mkdir --parents build
