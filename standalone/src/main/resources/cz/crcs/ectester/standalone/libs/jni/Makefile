@@ -59,7 +59,7 @@ JNI_PLATFORMINCLUDEDIR ?= $(JNI_INCLUDEDIR)/$(JNI_PLATFORM)
 ###############################################################################
 ## Targets.
 
-all: tomcrypt botan cryptopp openssl boringssl gcrypt mbedtls ippcp nettle libressl
+all: tomcrypt botan cryptopp openssl boringssl gcrypt mbedtls ippcp nettle libressl tropicsquare
 
 # Common utils
 c_utils.o: c_utils.c
@@ -174,6 +174,19 @@ nettle_provider.so: nettle.o c_utils.o | lib_timing.so
 nettle.o: nettle.c
 	$(CC) $(shell pkg-config --cflags nettle) $(shell pkg-config --libs hogweed) -lgmp $(CFLAGS) -c $<
 
+# TropicSquare shim
+tropicsquare: tropicsquare_provider.so
+
+tropicsquare_provider.so: tropicsquare.o cpp_utils.o | lib_timing.so
+	$(CXX) $(LFLAGS) -o $@ -Wl,-rpath,'$$ORIGIN/lib' $^ -L. -l:lib_timing.so \
+		-L${HOME}/projects/ts-spect-compiler/build/src/cosim -lspect_iss_dpi
+
+tropicsquare.o: tropicsquare.cpp
+	$(CXX) $(CXXFLAGS) \
+		-I/home/qup/projects/ts-spect-compiler/src/cosim/ \
+		-I/home/qup/projects/ts-spect-compiler/src/spect_lib/ \
+		-L${HOME}/projects/ts-spect-compiler/build/src/cosim -lspect_iss_dpi -c $<
+
 
 # LibreSSL shim
 libressl: libressl_provider.so
@@ -207,4 +220,4 @@ clean:
 	rm -rf *.o
 	rm -rf *.so
 
-.PHONY: all help clean openssl boringssl gcrypt tomcrypt botan cryptopp mbedtls ippcp nettle libressl
+.PHONY: all help clean openssl boringssl gcrypt tomcrypt botan cryptopp mbedtls ippcp nettle libressl tropicsquare
