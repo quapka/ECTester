@@ -123,7 +123,9 @@ public class ECTesterStandalone {
                     MbedTLSLib.class,
                     IppcpLib.class,
                     NettleLib.class,
-                    LibresslLib.class};
+                    LibresslLib.class,
+                    TropicSquareFirmware.class,
+            };
             for (Class<?> c : libClasses) {
                 try {
                     libObjects.add((ProviderECLibrary) c.getDeclaredConstructor().newInstance());
