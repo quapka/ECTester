@@ -205,9 +205,11 @@ public abstract class NativeKeyPairGeneratorSpi extends KeyPairGeneratorSpi {
     }
 
     public static class TropicSquare extends NativeKeyPairGeneratorSpi {
-        public TropicSquare() {
-            initialize(256, new SecureRandom());
-        }
+        private final String type;
+
+        public TropicSquare(String type) {
+            this.type = type;
+         }
 
         @Override
         native boolean keysizeSupported(int keysize);
@@ -220,6 +222,13 @@ public abstract class NativeKeyPairGeneratorSpi extends KeyPairGeneratorSpi {
 
         @Override
         native KeyPair generate(AlgorithmParameterSpec params, SecureRandom random);
+    }
+
+    public static class TropicSquareECDSA extends TropicSquare {
+
+        public TropicSquareECDSA() {
+            super("ECDSA");
+        }
     }
 
     public static class Gcrypt extends NativeKeyPairGeneratorSpi {

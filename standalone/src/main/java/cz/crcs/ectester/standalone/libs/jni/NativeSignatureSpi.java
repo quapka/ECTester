@@ -372,6 +372,13 @@ public abstract class NativeSignatureSpi extends SignatureSpi {
         }
     }
 
+    public static class TropicSquareECDSAwithSHA512 extends TropicSquare {
+
+        public TropicSquareECDSAwithSHA512() {
+            super("SHA512withECDSA");
+        }
+    }
+
     public abstract static class Gcrypt extends SimpleSignatureSpi {
         private final String type;
 
