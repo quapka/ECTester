@@ -123,12 +123,23 @@
            ninja
          '';
 
+         wolfCrypt-JNI = ''
+           mkdir junit
+           wget -P junit/ https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar 
+           wget -P junit/ https://repo1.maven.org/maven2/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar
+           make -f makefile.linux
+           env JUNIT_HOME=junit/ ant build-jce-release
+         '';
+
         # TODO add LD_LIB properly
         shellHook = ''
           export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$HOME/projects/ts-spect-compiler/build/src/cosim
 
         '';
 
+          # pushd ext/wolfcrypt-jni
+          # ${wolfCrypt-JNI}
+          # popd
 
         #   pushd ext/mbedtls
         #   ${buildMbedTLS}
