@@ -67,9 +67,15 @@
           ];
 
           LD_LIBRARY_PATH = with pkgs; pkgs.lib.makeLibraryPath [
+            libtommath
             libtomcrypt
+            botan2
             cryptopp
+            openssl
+            libgcrypt
             nettle
+            gmp
+            libgpg-error
           ];
 
           # NOTE: Mixing postVenvCreation aznd shellHook results in only shellHook being called
@@ -112,7 +118,13 @@
            ninja
          '';
 
-        # shellHook = ''
+        # TODO add LD_LIB properly
+        shellHook = ''
+          export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$HOME/projects/ts-spect-compiler/build/src/cosim
+
+        '';
+
+
         #   pushd ext/mbedtls
         #   ${buildMbedTLS}
         #   popd
