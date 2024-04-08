@@ -60,6 +60,10 @@
             wolfssl
             nettle
             libressl
+
+            gmp
+            libgpg-error
+            wget
           ];
 
           LD_LIBRARY_PATH = with pkgs; pkgs.lib.makeLibraryPath [
