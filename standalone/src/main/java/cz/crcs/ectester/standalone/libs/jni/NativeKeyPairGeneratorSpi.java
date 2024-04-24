@@ -2,11 +2,13 @@ package cz.crcs.ectester.standalone.libs.jni;
 
 import cz.crcs.ectester.common.ec.EC_Curve;
 import cz.crcs.ectester.data.EC_Store;
+import cz.crcs.ectester.common.util.*;
 
 import java.security.*;
 import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.ECGenParameterSpec;
 import java.security.spec.ECParameterSpec;
+import java.security.spec.EllipticCurve;
 
 /**
  * @author Jan Jancar johny@neuromancer.sk
@@ -211,11 +213,18 @@ public abstract class NativeKeyPairGeneratorSpi extends KeyPairGeneratorSpi {
             this.type = type;
          }
 
+        // NOTE this can also be hardcoded to 256
         @Override
         native boolean keysizeSupported(int keysize);
 
         @Override
-        native boolean paramsSupported(AlgorithmParameterSpec params);
+        boolean paramsSupported(AlgorithmParameterSpec params) {
+            // TropicSquare does not support all parameters, but only a limited set of p25519 and secp256k1 NIST P-256
+            // FIXME p25519 is also supported by TropicSquare
+            EC_Curve secp256k1 = EC_Store.getInstance().getObject(EC_Curve.class, "secg/secp256k1");
+            return ECUtil.equalECParameterSpec( ((ECParameterSpec) params), secp256k1.toSpec());
+        }
+
 
         @Override
         native KeyPair generate(int keysize, SecureRandom random);
