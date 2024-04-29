@@ -1,0 +1,5 @@
+start
+set mem[0x0000] 0x00010060
+set mem[0x0100] 0x00030160
+run
+exit

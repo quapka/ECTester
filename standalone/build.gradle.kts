@@ -53,7 +53,7 @@ tasks.named<Test>("test") {
 
     // Add wolfcrypt JNI lib path to LD_LIBRARY_PATH (as our native library loading does not handle it)
     environment(
-            "LD_LIBRARY_PATH", "$rootDir/ext/wolfcrypt-jni/lib/:" + System.getenv("LD_LIBRARY_PATH")
+            "LD_LIBRARY_PATH", "/home/qup/projects/ts-spect-compiler/build/src/cosim:" + "$rootDir/ext/wolfcrypt-jni/lib/:" + System.getenv("LD_LIBRARY_PATH")
     )
     // Add a path where we will store our test results.
     environment(

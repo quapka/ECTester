@@ -175,6 +175,7 @@ public class ECTesterStandalone {
         } catch (InvalidAlgorithmParameterException | InvalidParameterException e) {
             System.err.println("Invalid algorithm parameter: " + e.getMessage());
         } catch (NoSuchAlgorithmException nsaex) {
+            System.err.println("hello");
             System.err.println("Algorithm not supported by the selected library: " + nsaex.getMessage());
         } catch (InvalidKeyException | SignatureException e) {
             e.printStackTrace();
@@ -692,14 +693,19 @@ public class ECTesterStandalone {
         KeyPairGeneratorIdent ident = null;
         String algo = cli.getOptionValue("generate.type", "EC");
         for (KeyPairGeneratorIdent kpIdent : lib.getKPGs()) {
+            System.out.println("koala");
+            System.out.println(kpIdent);
+            System.out.println(algo);
             if (kpIdent.contains(algo)) {
                 ident = kpIdent;
+                System.out.println("match found");
                 break;
             }
         }
         if (ident == null) {
             throw new NoSuchAlgorithmException(algo);
         }
+        System.err.println("xxxxxxxxxx");
         KeyPairGenerator kpg = ident.getInstance(lib.getProvider());
         if (cli.hasOption("generate.bits")) {
             int bits = Integer.parseInt(cli.getOptionValue("generate.bits"));

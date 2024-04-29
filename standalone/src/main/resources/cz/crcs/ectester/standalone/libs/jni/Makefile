@@ -179,13 +179,18 @@ tropicsquare: tropicsquare_provider.so
 
 tropicsquare_provider.so: tropicsquare.o cpp_utils.o | lib_timing.so
 	$(CXX) $(LFLAGS) -o $@ -Wl,-rpath,'$$ORIGIN/lib' $^ -L. -l:lib_timing.so \
-		-L${HOME}/projects/ts-spect-compiler/build/src/cosim -lspect_iss_dpi
+		-L${HOME}/projects/ts-spect-compiler/build/src/cosim -lspect_iss_dpi -lspect_iss_lib
 
 tropicsquare.o: tropicsquare.cpp
 	$(CXX) $(CXXFLAGS) \
+		-I/home/qup/projects/ts-spect-compiler/modules/cli/include/cli \
+		-I/home/qup/projects/ts-spect-compiler/modules/xkcp/bin/generic64/libXKCP.a.headers \
+		-I/home/qup/projects/ts-spect-compiler/modules/xkcp/lib/high/Keccak \
+		-I/home/qup/projects/ts-spect-compiler/modules/xkcp/lib/common \
+		-I/home/qup/projects/ts-spect-compiler/src/common/ \
 		-I/home/qup/projects/ts-spect-compiler/src/cosim/ \
 		-I/home/qup/projects/ts-spect-compiler/src/spect_lib/ \
-		-L${HOME}/projects/ts-spect-compiler/build/src/cosim -lspect_iss_dpi -c $<
+		-L${HOME}/projects/ts-spect-compiler/build/src/cosim -lspect_iss_dpi -lspect_iss_lib -c $<
 
 
 # LibreSSL shim

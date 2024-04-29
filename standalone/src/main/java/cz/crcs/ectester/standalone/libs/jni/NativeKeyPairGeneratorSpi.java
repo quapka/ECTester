@@ -221,16 +221,38 @@ public abstract class NativeKeyPairGeneratorSpi extends KeyPairGeneratorSpi {
         boolean paramsSupported(AlgorithmParameterSpec params) {
             // TropicSquare does not support all parameters, but only a limited set of p25519 and secp256k1 NIST P-256
             // FIXME p25519 is also supported by TropicSquare
+            System.out.println("staaaaaaaaaaaaaaaaaaaaaaaaaaaaaart");
+
             EC_Curve secp256k1 = EC_Store.getInstance().getObject(EC_Curve.class, "secg/secp256k1");
+            System.out.println("eeeeeeeeeeeeeeeeeeeeeeeend");
+
             return ECUtil.equalECParameterSpec( ((ECParameterSpec) params), secp256k1.toSpec());
         }
 
 
         @Override
-        native KeyPair generate(int keysize, SecureRandom random);
+        KeyPair generate(int keysize, SecureRandom random) {
+            System.out.println("generaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaate");
+            KeyPair keypair = generateInner(keysize, random);
+            // TODO add params the to the keypair
+            // EC_Curve secp256k1 = EC_Store.getInstance().getObject(EC_Curve.class, "secg/secp256k1");
+            // ECParameterSpec params = secp256k1.toSpec();
+            return keypair;
+            // return KeyPair();
+        }
 
+        native KeyPair generateInner(int keysize, SecureRandom random);
+
+        // FIXME can be removed?
         @Override
-        native KeyPair generate(AlgorithmParameterSpec params, SecureRandom random);
+        KeyPair generate(AlgorithmParameterSpec params, SecureRandom random) {
+            System.out.println("generatig keeeeeeeeeeeeeeeeeys");
+            // if ( paramsSupported(params) ) {
+            return generate(256, random);
+            // }
+            // raise an exception?
+            // return null;
+        }
     }
 
     public static class TropicSquareECDSA extends TropicSquare {

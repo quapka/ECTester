@@ -8,7 +8,8 @@ import java.util.Set;
  */
 public class TropicSquareFirmware extends NativeECLibrary {
     public TropicSquareFirmware() {
-        super("TropicSquare", "tropicsquare_provider", "libspect_iss_dpi.so");
+        // TODO the last is the requirement and we might not need it actually?
+        super("TropicSquare", "tropicsquare_provider"); //, "libspect_iss_dpi.so");
     }
 
     @Override

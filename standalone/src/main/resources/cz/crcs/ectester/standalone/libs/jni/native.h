@@ -1918,7 +1918,7 @@ JNIEXPORT jboolean JNICALL Java_cz_crcs_ectester_standalone_libs_jni_NativeKeyPa
  * Method:    generate
  * Signature: (ILjava/security/SecureRandom;)Ljava/security/KeyPair;
  */
-JNIEXPORT jobject JNICALL Java_cz_crcs_ectester_standalone_libs_jni_NativeKeyPairGeneratorSpi_00024TropicSquare_generate__ILjava_security_SecureRandom_2
+JNIEXPORT jobject JNICALL Java_cz_crcs_ectester_standalone_libs_jni_NativeKeyPairGeneratorSpi_00024TropicSquare_generateInner__ILjava_security_SecureRandom_2
   (JNIEnv *, jobject, jint, jobject);
 
 /*
