@@ -25,6 +25,7 @@
       {
         devShells.default = mkShell rec {
           buildInputs = [
+            gdb
             ant
             jdk11
             pkg-config
@@ -64,6 +65,7 @@
             gmp
             libgpg-error
             wget
+            libconfig
           ];
 
           LD_LIBRARY_PATH = with pkgs; pkgs.lib.makeLibraryPath [
@@ -76,6 +78,7 @@
             nettle
             gmp
             libgpg-error
+            libconfig
           ];
 
           # NOTE: Mixing postVenvCreation aznd shellHook results in only shellHook being called
