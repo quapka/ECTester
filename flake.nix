@@ -639,7 +639,7 @@
               gradleBuildFlags = [ ":standalone:uberJar" ];
               src = ./.;
 
-              jniLibsPath = "standalone/src/main/resources/cz/crcs/ectester/standalone/libs/jni/";
+              jniLibsPath = "standalone/src/main/resources/cz/crcs/ectester/standalone/libs/jni/\n";
 
               #      shims = [ "tomcrypt" "botan" "cryptopp" "openssl" "boringssl" "gcrypt" "mbedtls" "ippcp" "nettle" "libressl" ];
               #      copyLib = libName:
