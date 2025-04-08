@@ -157,9 +157,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-l", "--library", help="The name of the library to test.")
     parser.add_argument("-s", "--suite", help="The ECTester test suite to run.")
+    parser.add_argument("-v", "--version", help="The version of the library to test.")
     args = parser.parse_args()
     library = args.library
     suite = args.suite
+    version = args.version
 
     libraries = [
         "botan",
@@ -205,6 +207,13 @@ def main():
     for library in libraries2test:
         with open(f"./nix/{library}_pkg_versions.json", "r") as f:
             versions = list(json.load(f).keys())
+
+        # If valid `version` was provided, iterate over `[version]` only
+        if version is not None:
+            if version not in versions:
+                raise ValueError(f"The version '{version}' is not one of the recognized version: \'{', '.join(v for v in versions)) }\'")
+            versions = [version]
+
         for version in versions:
             built = build_library(library, version)
             if built:
