@@ -8,11 +8,13 @@ from pathlib import Path
 
 import subprocess as sp
 
+
 def get_all_versions(library):
     with open(f"./nix/{library}_pkg_versions.json", "r") as handle:
         versions = json.load(handle)
 
     return versions
+
 
 def attempt_build(library, version, variant):
     cmd = ["nix", "build", f".#{variant}.{library}.{version}"]
@@ -27,18 +29,22 @@ def attempt_build(library, version, variant):
         stderr = e.output.decode()
         success = False
 
-    result['build_time'] = time.time() - start
-    result['success'] = success
-    result['stderr'] = stderr.split('\n') if stderr else []
+    result["build_time"] = time.time() - start
+    result["success"] = success
+    result["stderr"] = stderr.split("\n") if stderr else []
 
     return result
+
 
 def valid_build_type(value):
     value = value.strip()
     valid_types = ["shim", "lib"]
     if value not in valid_types:
-        raise argparse.ArgumentTypeError(f"'{value}' not from expected {', '.join(valid_types)}.")
+        raise argparse.ArgumentTypeError(
+            f"'{value}' not from expected {', '.join(valid_types)}."
+        )
     return value
+
 
 def save_build_result(library, variant, version, result):
     resdir = Path(f"build_all/{variant}")
@@ -65,15 +71,15 @@ def main():
     variant = args.variant
 
     libraries = [
-         "botan", 
-         "cryptopp", 
-         "openssl", 
-         "boringssl", 
-         "gcrypt", 
-         "mbedtls", 
-         "ippcp", 
-         "nettle", 
-         "libressl", 
+        "botan",
+        "cryptopp",
+        "openssl",
+        "boringssl",
+        "gcrypt",
+        "mbedtls",
+        "ippcp",
+        "nettle",
+        "libressl",
     ]
 
     match library:
@@ -93,8 +99,10 @@ def main():
                 save_build_result(lib, variant, version, result)
                 print(f"{version}: {result['success']}")
         case _:
-            print(f"Unrecognized library '{library}'. Try one of: {', '.join(libraries)}.")
+            print(
+                f"Unrecognized library '{library}'. Try one of: {', '.join(libraries)}."
+            )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
