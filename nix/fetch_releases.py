@@ -397,7 +397,7 @@ def fetch_ippcp():
     # https://api.github.com/repos/intel/ipp-crypto/releases
     pkg = "ippcp"
     owner = "intel"
-    repo = "ipp-crypto"
+    repo = "cryptography-primitives"
     release_url = f"https://api.github.com/repos/{owner}/{repo}/releases"
     resp = requests.get(release_url)
 
