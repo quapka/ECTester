@@ -237,8 +237,8 @@
                 inherit version;
                 src = pkgs.fetchFromGitHub {
                   owner = "intel";
-                  repo = "ipp-crypto";
-                  rev = "ippcp_${version}";
+                  repo = "cryptography-primitives";
+                  rev = "${version}";
                   inherit hash;
                 };
               }
