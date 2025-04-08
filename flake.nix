@@ -919,6 +919,7 @@
               propagatedBuildInputs = [
                 pandas
                 jinja2
+                pkgs.texliveFull
               ];
 
               src = ./nix/plot_versions.py;
