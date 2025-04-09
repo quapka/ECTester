@@ -909,7 +909,7 @@
               '';
             };
 
-          plotVersions =
+          createTables =
             with pkgs.python3Packages;
             buildPythonApplication {
               pname = "buildAll";
@@ -922,7 +922,7 @@
                 pkgs.texliveFull
               ];
 
-              src = ./nix/plot_versions.py;
+              src = ./nix/create_tables.py;
               dontUnpack = true;
               installPhase = ''
                 install -Dm755 $src $out/bin/$pname
