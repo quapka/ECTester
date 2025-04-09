@@ -4,12 +4,32 @@ import subprocess as sp
 
 import argparse
 import json
+import yaml
 import tempfile
+import re
+
 
 from collections import defaultdict
 from pathlib import Path
+from typing import Final, List
 
 import pandas as pd
+
+
+TEST_SUITES: Final[List[str]] = [
+    "default",
+    "test-vectors",
+    "performance",
+    "signature",
+    "miscellaneous",
+    "invalid",
+    "twist",
+    "degenerate",
+    "edge-cases",
+    "cofactor",
+    "composite",
+    "wrong",
+]
 
 
 def get_all_versions(library):
@@ -82,13 +102,14 @@ def build_results_to_latex(library):
 
 
 def table_header_lines():
-    return r"""
-\begin{table}
-    \centering
-	\begin{tabular}{lll}
-		\toprule
-		Versions & Library & Shim \\
-		\midrule
+    suites_header = " & ".join(suite for suite in TEST_SUITES)
+    return f"""
+\\begin{{table}}
+    \\centering
+	\\begin{{tabular}}{{lll|llllllllllll}}
+		\\toprule
+		Versions & Library & Shim & {suites_header} \\\\
+		\\midrule
 """.strip().split(
         "\n"
     )
@@ -110,8 +131,11 @@ def get_results_rows(library):
     lib_results = get_results(library, "lib")
     shim_results = get_results(library, "shim")
 
+    results_dir = Path("./results/yml")
     rows = []
     for ver, values in versions.items():
+        print(f"\tversion: {ver}")
+        # row = {}
         # For most libraries we can reference a particular version
         try:
             identifier = values["version"].replace("_", r"{\_}")
@@ -121,13 +145,39 @@ def get_results_rows(library):
         except KeyError:
             identifier = ver
 
-        rows.append(
-            {
-                "identifier": identifier,
-                "library": lib_results[ver]["success"],
-                "shim": shim_results[ver]["success"],
-            }
-        )
+        row = {
+            "identifier": identifier,
+            "library": lib_results[ver]["success"],
+            "shim": shim_results[ver]["success"],
+        }
+
+        for suite in TEST_SUITES:
+            print(f"\t\tsuite: {suite}")
+            ok = False
+            try:
+                with open(results_dir / f"{library}_{suite}_{ver}.yml", "r") as handle:
+                    try:
+                        ok = (
+                            True
+                            if re.search(
+                                "\s+ok:\s+(?P<res>true|false)", handle.read()
+                            ).group("res")
+                            == "true"
+                            else False
+                        )
+                    except Exception:
+                        ok = False
+            except FileNotFoundError:
+                ok = False
+                # try:
+                # NOTE we expect to have all results for now
+                # for event in yaml.parse(handle):
+                #     print(event)
+                # # data = yaml.safe_load("\n".join(handle.readlines(100)))
+                # ok = data["testRun"]["tests"][0]["result"]["ok"]
+                # except yam.YAMLError:
+            row[suite] = r"{\color{blue}\faCheck}" if ok else r"{\color{red}\faRemove}"
+        rows.append(row)
 
     return rows
 
@@ -142,7 +192,8 @@ def create_latex_table(library):
         lib = good if row["library"] else bad
         shim = good if row["shim"] else bad
 
-        tline = f"{mono_id} & {lib} & {shim} \\\\"
+        suites_results = " & ".join(row[suite] for suite in TEST_SUITES)
+        tline = f"{mono_id} & {lib} & {shim} & {suites_results} \\\\"
 
         out.append(tline)
 
