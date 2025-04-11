@@ -522,6 +522,45 @@ def fetch_libressl():
     serialize_versions(pkg, renders, versions)
 
 
+def fetch_bouncycastle():
+    url = "https://repo1.maven.org/maven2/org/bouncycastle/"
+    prov_resp = requests.get(url)
+    soup = BeautifulSoup(prov_resp.content, "html.parser")
+    providers = []
+    for link in soup.find_all("a"):
+        try:
+            prov = link["title"]
+        except KeyError:
+            continue
+        if not (prov.startswith("bcprov") or prov.startswith("bc-fips")):
+            continue
+        providers.append(prov)
+
+    results = {}
+    for provider in providers:
+        print(provider)
+        ver_resp = requests.get(f"{url}{provider}")
+        soup = BeautifulSoup(ver_resp.content, "html.parser")
+        for link in soup.find_all("a"):
+            prov = provider.strip("/").split("-")[-1]
+            try:
+                version = link["title"]
+            except KeyError:
+                continue
+            if not version[:1].isdigit():
+                continue
+            ver = version.strip("/")
+            tag = f"{prov}-{ver}".replace(".", "_")
+            results[tag] = {
+                "provider": provider.strip("/"),
+                "version": ver,
+            }
+
+    # FIXME add some sorting, so that jdk18on-1.80 ends up on top
+    with open("nix/bouncycastle_pkg_versions.json", "w") as handle:
+        json.dump(results, handle, indent=4)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("lib")
@@ -532,6 +571,8 @@ def main():
     match args.lib:
         case "botan":
             fetch_botan()
+        case "bc" | "bouncy" | "bouncycastle":
+            fetch_bouncycastle()
         case "cryptopp":
             fetch_cryptopp()
         case "openssl":
