@@ -1,0 +1,542 @@
+{
+    "fips-1_0_0": {
+        "provider": "bc-fips",
+        "version": "1.0.0"
+    },
+    "fips-1_0_1": {
+        "provider": "bc-fips",
+        "version": "1.0.1"
+    },
+    "fips-1_0_2": {
+        "provider": "bc-fips",
+        "version": "1.0.2"
+    },
+    "fips-1_0_2_1": {
+        "provider": "bc-fips",
+        "version": "1.0.2.1"
+    },
+    "fips-1_0_2_3": {
+        "provider": "bc-fips",
+        "version": "1.0.2.3"
+    },
+    "fips-1_0_2_4": {
+        "provider": "bc-fips",
+        "version": "1.0.2.4"
+    },
+    "fips-1_0_2_5": {
+        "provider": "bc-fips",
+        "version": "1.0.2.5"
+    },
+    "fips-2_0_0": {
+        "provider": "bc-fips",
+        "version": "2.0.0"
+    },
+    "fips-2_1_0": {
+        "provider": "bc-fips",
+        "version": "2.1.0"
+    },
+    "debug-1_0_2": {
+        "provider": "bc-fips-debug",
+        "version": "1.0.2"
+    },
+    "debug-1_0_2_1": {
+        "provider": "bc-fips-debug",
+        "version": "1.0.2.1"
+    },
+    "debug-1_0_2_3": {
+        "provider": "bc-fips-debug",
+        "version": "1.0.2.3"
+    },
+    "debug-1_0_2_4": {
+        "provider": "bc-fips-debug",
+        "version": "1.0.2.4"
+    },
+    "debug-1_0_2_5": {
+        "provider": "bc-fips-debug",
+        "version": "1.0.2.5"
+    },
+    "debug-2_0_0": {
+        "provider": "bc-fips-debug",
+        "version": "2.0.0"
+    },
+    "debug-2_1_0": {
+        "provider": "bc-fips-debug",
+        "version": "2.1.0"
+    },
+    "jdk14-1_55": {
+        "provider": "bcprov-jdk14",
+        "version": "1.55"
+    },
+    "jdk14-1_59": {
+        "provider": "bcprov-jdk14",
+        "version": "1.59"
+    },
+    "jdk14-1_60": {
+        "provider": "bcprov-jdk14",
+        "version": "1.60"
+    },
+    "jdk14-1_64": {
+        "provider": "bcprov-jdk14",
+        "version": "1.64"
+    },
+    "jdk14-1_68": {
+        "provider": "bcprov-jdk14",
+        "version": "1.68"
+    },
+    "jdk14-1_69": {
+        "provider": "bcprov-jdk14",
+        "version": "1.69"
+    },
+    "jdk14-1_70": {
+        "provider": "bcprov-jdk14",
+        "version": "1.70"
+    },
+    "jdk14-1_71": {
+        "provider": "bcprov-jdk14",
+        "version": "1.71"
+    },
+    "jdk14-1_72": {
+        "provider": "bcprov-jdk14",
+        "version": "1.72"
+    },
+    "jdk14-1_73": {
+        "provider": "bcprov-jdk14",
+        "version": "1.73"
+    },
+    "jdk14-1_74": {
+        "provider": "bcprov-jdk14",
+        "version": "1.74"
+    },
+    "jdk14-1_78": {
+        "provider": "bcprov-jdk14",
+        "version": "1.78"
+    },
+    "jdk14-1_79": {
+        "provider": "bcprov-jdk14",
+        "version": "1.79"
+    },
+    "jdk14-1_80": {
+        "provider": "bcprov-jdk14",
+        "version": "1.80"
+    },
+    "jdk15on-1_52": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.52"
+    },
+    "jdk15on-1_53": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.53"
+    },
+    "jdk15on-1_55": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.55"
+    },
+    "jdk15on-1_56": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.56"
+    },
+    "jdk15on-1_57": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.57"
+    },
+    "jdk15on-1_58": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.58"
+    },
+    "jdk15on-1_59": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.59"
+    },
+    "jdk15on-1_60": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.60"
+    },
+    "jdk15on-1_61": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.61"
+    },
+    "jdk15on-1_62": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.62"
+    },
+    "jdk15on-1_63": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.63"
+    },
+    "jdk15on-1_64": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.64"
+    },
+    "jdk15on-1_65": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.65"
+    },
+    "jdk15on-1_66": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.66"
+    },
+    "jdk15on-1_67": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.67"
+    },
+    "jdk15on-1_68": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.68"
+    },
+    "jdk15on-1_69": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.69"
+    },
+    "jdk15on-1_70": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.70"
+    },
+    "jdk15to18-1_64": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.64"
+    },
+    "jdk15to18-1_68": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.68"
+    },
+    "jdk15to18-1_69": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.69"
+    },
+    "jdk15to18-1_70": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.70"
+    },
+    "jdk15to18-1_71": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.71"
+    },
+    "jdk15to18-1_72": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.72"
+    },
+    "jdk15to18-1_73": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.73"
+    },
+    "jdk15to18-1_74": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.74"
+    },
+    "jdk15to18-1_75": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.75"
+    },
+    "jdk15to18-1_76": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.76"
+    },
+    "jdk15to18-1_77": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.77"
+    },
+    "jdk15to18-1_78": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.78"
+    },
+    "jdk15to18-1_78_1": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.78.1"
+    },
+    "jdk15to18-1_79": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.79"
+    },
+    "jdk18on-1_71": {
+        "provider": "bcprov-jdk18on",
+        "version": "1.71"
+    },
+    "jdk18on-1_72": {
+        "provider": "bcprov-jdk18on",
+        "version": "1.72"
+    },
+    "jdk18on-1_73": {
+        "provider": "bcprov-jdk18on",
+        "version": "1.73"
+    },
+    "jdk18on-1_74": {
+        "provider": "bcprov-jdk18on",
+        "version": "1.74"
+    },
+    "jdk18on-1_75": {
+        "provider": "bcprov-jdk18on",
+        "version": "1.75"
+    },
+    "jdk18on-1_76": {
+        "provider": "bcprov-jdk18on",
+        "version": "1.76"
+    },
+    "jdk18on-1_77": {
+        "provider": "bcprov-jdk18on",
+        "version": "1.77"
+    },
+    "jdk18on-1_78": {
+        "provider": "bcprov-jdk18on",
+        "version": "1.78"
+    },
+    "jdk18on-1_78_1": {
+        "provider": "bcprov-jdk18on",
+        "version": "1.78.1"
+    },
+    "jdk18on-1_79": {
+        "provider": "bcprov-jdk18on",
+        "version": "1.79"
+    },
+    "jdk14-1_45": {
+        "provider": "bcprov-jdk14",
+        "version": "1.45"
+    },
+    "jdk14-1_46": {
+        "provider": "bcprov-jdk14",
+        "version": "1.46"
+    },
+    "jdk14-1_47": {
+        "provider": "bcprov-jdk14",
+        "version": "1.47"
+    },
+    "jdk14-1_48": {
+        "provider": "bcprov-jdk14",
+        "version": "1.48"
+    },
+    "jdk14-1_49": {
+        "provider": "bcprov-jdk14",
+        "version": "1.49"
+    },
+    "jdk14-1_50": {
+        "provider": "bcprov-jdk14",
+        "version": "1.50"
+    },
+    "jdk14-1_51": {
+        "provider": "bcprov-jdk14",
+        "version": "1.51"
+    },
+    "jdk14-1_53": {
+        "provider": "bcprov-jdk14",
+        "version": "1.53"
+    },
+    "jdk14-1_54": {
+        "provider": "bcprov-jdk14",
+        "version": "1.54"
+    },
+    "jdk14-1_56": {
+        "provider": "bcprov-jdk14",
+        "version": "1.56"
+    },
+    "jdk14-1_57": {
+        "provider": "bcprov-jdk14",
+        "version": "1.57"
+    },
+    "jdk14-1_58": {
+        "provider": "bcprov-jdk14",
+        "version": "1.58"
+    },
+    "jdk14-1_65": {
+        "provider": "bcprov-jdk14",
+        "version": "1.65"
+    },
+    "jdk14-1_67": {
+        "provider": "bcprov-jdk14",
+        "version": "1.67"
+    },
+    "jdk14-1_75": {
+        "provider": "bcprov-jdk14",
+        "version": "1.75"
+    },
+    "jdk14-1_76": {
+        "provider": "bcprov-jdk14",
+        "version": "1.76"
+    },
+    "jdk14-1_78_1": {
+        "provider": "bcprov-jdk14",
+        "version": "1.78.1"
+    },
+    "jdk15-1_43": {
+        "provider": "bcprov-jdk15",
+        "version": "1.43"
+    },
+    "jdk15-1_44": {
+        "provider": "bcprov-jdk15",
+        "version": "1.44"
+    },
+    "jdk15-1_45": {
+        "provider": "bcprov-jdk15",
+        "version": "1.45"
+    },
+    "jdk15-1_46": {
+        "provider": "bcprov-jdk15",
+        "version": "1.46"
+    },
+    "jdk15on-1": {
+        "provider": "bcprov-jdk15on",
+        "version": "1"
+    },
+    "jdk15on-1_46": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.46"
+    },
+    "jdk15on-1_47": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.47"
+    },
+    "jdk15on-1_48": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.48"
+    },
+    "jdk15on-1_49": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.49"
+    },
+    "jdk15on-1_50": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.50"
+    },
+    "jdk15on-1_51": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.51"
+    },
+    "jdk15on-1_54": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.54"
+    },
+    "jdk15to18-1_67": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.67"
+    },
+    "jdk16-1_45": {
+        "provider": "bcprov-jdk16",
+        "version": "1.45"
+    },
+    "jdk16-1_46": {
+        "provider": "bcprov-jdk16",
+        "version": "1.46"
+    },
+    "jdk12-130": {
+        "provider": "bcprov-jdk12",
+        "version": "130"
+    },
+    "jdk14-1_38": {
+        "provider": "bcprov-jdk14",
+        "version": "1.38"
+    },
+    "jdk14-1_43": {
+        "provider": "bcprov-jdk14",
+        "version": "1.43"
+    },
+    "jdk14-1_44": {
+        "provider": "bcprov-jdk14",
+        "version": "1.44"
+    },
+    "jdk14-1_61": {
+        "provider": "bcprov-jdk14",
+        "version": "1.61"
+    },
+    "jdk14-1_62": {
+        "provider": "bcprov-jdk14",
+        "version": "1.62"
+    },
+    "jdk14-1_63": {
+        "provider": "bcprov-jdk14",
+        "version": "1.63"
+    },
+    "jdk14-1_77": {
+        "provider": "bcprov-jdk14",
+        "version": "1.77"
+    },
+    "jdk15-1_32": {
+        "provider": "bcprov-jdk15",
+        "version": "1.32"
+    },
+    "jdk15-1_38": {
+        "provider": "bcprov-jdk15",
+        "version": "1.38"
+    },
+    "jdk15-1_40": {
+        "provider": "bcprov-jdk15",
+        "version": "1.40"
+    },
+    "jdk15+-1_46": {
+        "provider": "bcprov-jdk15+",
+        "version": "1.46"
+    },
+    "jdk15on-1_65_01": {
+        "provider": "bcprov-jdk15on",
+        "version": "1.65.01"
+    },
+    "jdk15to18-1_63": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.63"
+    },
+    "jdk15to18-1_65": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.65"
+    },
+    "jdk15to18-1_66": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.66"
+    },
+    "jdk15to18-1_80": {
+        "provider": "bcprov-jdk15to18",
+        "version": "1.80"
+    },
+    "jdk16-1_38": {
+        "provider": "bcprov-jdk16",
+        "version": "1.38"
+    },
+    "jdk16-1_40": {
+        "provider": "bcprov-jdk16",
+        "version": "1.40"
+    },
+    "jdk16-1_43": {
+        "provider": "bcprov-jdk16",
+        "version": "1.43"
+    },
+    "jdk16-1_44": {
+        "provider": "bcprov-jdk16",
+        "version": "1.44"
+    },
+    "jdk18on-1_71_1": {
+        "provider": "bcprov-jdk18on",
+        "version": "1.71.1"
+    },
+    "jdk18on-1_80": {
+        "provider": "bcprov-jdk18on",
+        "version": "1.80"
+    },
+    "lts8on-2_73_0": {
+        "provider": "bcprov-lts8on",
+        "version": "2.73.0"
+    },
+    "lts8on-2_73_1": {
+        "provider": "bcprov-lts8on",
+        "version": "2.73.1"
+    },
+    "lts8on-2_73_2": {
+        "provider": "bcprov-lts8on",
+        "version": "2.73.2"
+    },
+    "lts8on-2_73_3": {
+        "provider": "bcprov-lts8on",
+        "version": "2.73.3"
+    },
+    "lts8on-2_73_4": {
+        "provider": "bcprov-lts8on",
+        "version": "2.73.4"
+    },
+    "lts8on-2_73_5": {
+        "provider": "bcprov-lts8on",
+        "version": "2.73.5"
+    },
+    "lts8on-2_73_6": {
+        "provider": "bcprov-lts8on",
+        "version": "2.73.6"
+    },
+    "lts8on-2_73_7": {
+        "provider": "bcprov-lts8on",
+        "version": "2.73.7"
+    }
+}

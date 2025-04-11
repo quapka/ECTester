@@ -928,6 +928,23 @@
               '';
             };
 
+          bcGradleLock =
+            with pkgs.python3Packages;
+            buildPythonApplication {
+              pname = "bcGradleLock";
+              version = "0.1.0";
+              format = "other";
+
+              propagatedBuildInputs = [
+              ];
+
+              src = ./nix/build_gradle_lock_for_bc.py;
+              dontUnpack = true;
+              installPhase = ''
+                install -Dm755 $src $out/bin/$pname
+              '';
+            };
+
         };
       }
     );
