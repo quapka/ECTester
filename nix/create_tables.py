@@ -40,7 +40,8 @@ def get_all_versions(library):
 
 def preamble():
     return r"""
-\documentclass[border=2mm, preview]{standalone}
+\documentclass[preview, border={1cm 1cm 16cm 1cm}]{standalone}
+
 \usepackage{fontawesome}
 \usepackage{xcolor}
 \usepackage{booktabs}
