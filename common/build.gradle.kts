@@ -11,8 +11,10 @@ repositories {
 }
 
 dependencies {
+    val bcProvider = findProperty("bcProvider") ?: "bcprov-jdk18on"
+    val bcVersion = findProperty("bcVersion") ?: "1.77"
     // https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk18on
-    api("org.bouncycastle:bcprov-jdk18on:1.77")
+    api("org.bouncycastle:${bcProvider}:${bcVersion}")
     // https://mvnrepository.com/artifact/commons-cli/commons-cli
     // We need 1.5.0, as for some reason 1.6.0 doesn't work (arguments don't ger parsed properly).
     api("commons-cli:commons-cli:1.5.0")
