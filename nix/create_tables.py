@@ -43,7 +43,7 @@ def preamble():
 \documentclass[preview, border={1cm 1cm 16cm 1cm}]{standalone}
 
 \usepackage{fontawesome}
-\usepackage{xcolor}
+\usepackage[table]{xcolor}
 \usepackage{booktabs}
 
 % typesetting of _ in text as \_
@@ -107,7 +107,10 @@ def table_header_lines():
     return f"""
 \\begin{{table}}
     \\centering
-	\\begin{{tabular}}{{lll|llllllllllll}}
+    \\rowcolors{{2}}{{gray!25}}{{white}}
+
+	\\begin{{tabular}}{{lcc|cccccccccccc}}
+        \\rowcolor{{gray!50}}
 		\\toprule
 		Versions & Library & Shim & {suites_header} \\\\
 		\\midrule
@@ -177,7 +180,9 @@ def get_results_rows(library):
                 # # data = yaml.safe_load("\n".join(handle.readlines(100)))
                 # ok = data["testRun"]["tests"][0]["result"]["ok"]
                 # except yam.YAMLError:
-            row[suite] = r"{\color{blue}\faCheck}" if ok else r"{\color{red}\faRemove}"
+            row[suite] = (
+                r"{\color{blue!50}\faCheck}" if ok else r"{\color{red!50}\faRemove}"
+            )
         rows.append(row)
 
     return rows
@@ -186,8 +191,8 @@ def get_results_rows(library):
 def create_latex_table(library):
     out = table_header_lines()
     for row in get_results_rows(library):
-        good = r"{\color{blue}\faCheck}"
-        bad = r"{\color{red}\faRemove}"
+        good = r"{\color{blue!50}\faCheck}"
+        bad = r"{\color{red!50}\faRemove}"
 
         mono_id = f"\\texttt{{{row['identifier']}}}"
         lib = good if row["library"] else bad
