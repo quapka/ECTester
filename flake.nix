@@ -571,6 +571,11 @@
 
         buildECTesterStandalone =
           {
+            gradleLockPath ? ./gradle.lock,
+            bouncycastle ? {
+              provider = null;
+              version = null;
+            },
             tomcrypt ? {
               version = null;
               hash = null;
@@ -641,11 +646,18 @@
             gradle2nix.builders.${system}.buildGradlePackage rec {
               pname = "ECTesterStandalone";
               version = "0.3.3";
-              lockFile = ./gradle.lock;
+              lockFile = gradleLockPath;
               buildJdk = pkgs.jdk_headless;
 
+              enableParallelBuilding = true;
+              enableParallelChecking = true;
+
               # NOTE: the shims are built separately, therefore no need to call build `libs` target
-              gradleBuildFlags = [ ":standalone:uberJar" ];
+              gradleBuildFlags = [
+                ":standalone:uberJar"
+                (if bouncycastle.provider != null then "-PbcProvider=${bouncycastle.provider}" else "")
+                (if bouncycastle.version != null then "-PbcVersion=${bouncycastle.version}" else "")
+              ];
               src = ./.;
 
               jniLibsPath = "standalone/src/main/resources/cz/crcs/ectester/standalone/libs/jni/";
@@ -707,6 +719,17 @@
           // {
             default = function { ${libName} = firstVersion; };
           };
+
+        loadVersionsBC =
+          { libName, function }:
+          let
+            versions = with builtins; fromJSON ( readFile ./nix/${libName}_pkg_versions.json);
+            firstVersion = pkgs.lib.lists.last (pkgs.lib.attrsets.attrValues versions);
+          in
+          pkgs.lib.mapAttrs (rev: specs: function { gradleLockPath = ./nix/bouncycastle/gradle_${rev}.lock; ${libName} = specs; }) versions;
+          # // {
+          #   default = function { gradleLockPath = ./nix/${rev}.lock;};
+          # };
 
         loadVersionsForShim =
           { libName, function }:
@@ -773,6 +796,11 @@
             libName = "libressl";
             function = buildECTesterStandalone;
           };
+          bouncycastle = loadVersionsBC {
+            libName = "bouncycastle";
+            function = buildECTesterStandalone;
+          };
+          bc = bouncycastle;
 
           shim = {
             tomcrypt = loadVersionsForShim {

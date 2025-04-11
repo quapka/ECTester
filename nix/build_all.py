@@ -65,15 +65,16 @@ def main():
     variant = args.variant
 
     libraries = [
-         "botan", 
-         "cryptopp", 
-         "openssl", 
-         "boringssl", 
-         "gcrypt", 
-         "mbedtls", 
-         "ippcp", 
-         "nettle", 
-         "libressl", 
+        "botan",
+        "bouncycastle",
+        "cryptopp",
+        "openssl",
+        "boringssl",
+        "gcrypt",
+        "mbedtls",
+        "ippcp",
+        "nettle",
+        "libressl",
     ]
 
     match library:
