@@ -30,11 +30,25 @@ def library_name(library):
             return "libgcrypt"
         case "mbedtls":
             return "mbedTLS"
+        case "bouncycastle":
+            return "BouncyCastle"
 
 def base_options(library):
     match library:
-        case "openssl" | "botan" | "boringssl" | "ippcp" | "libressl" | "gcrypt" | "nettle":
-            return ["-ps", "123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234"]
+        case (
+            "openssl"
+            | "botan"
+            | "bouncycastle"
+            | "boringssl"
+            | "ippcp"
+            | "libressl"
+            | "gcrypt"
+            | "nettle"
+        ):
+            return [
+                "-ps",
+                "123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234",
+            ]
         case "cryptopp" | "mbedtls":
             return ["-ps", "12345678"]
         case _:
@@ -120,15 +134,16 @@ def main():
     suite = args.suite
 
     libraries = [
-         "botan", 
-         "cryptopp", 
-         "openssl", 
-         "boringssl", 
-         "gcrypt", 
-         "mbedtls", 
-         "ippcp", 
-         "nettle", 
-         "libressl", 
+        "botan",
+        "bouncycastle",
+        "cryptopp",
+        "openssl",
+        "boringssl",
+        "gcrypt",
+        "mbedtls",
+        "ippcp",
+        "nettle",
+        "libressl",
     ]
 
     suites = [
