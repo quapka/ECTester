@@ -149,10 +149,20 @@ def get_results_rows(library):
         except KeyError:
             identifier = ver
 
+        try:
+            lib_res = lib_results[ver]["success"]
+        except KeyError:
+            lib_res = False
+
+        try:
+            shim_res = shim_results[ver]["success"]
+        except KeyError:
+            shim_res = False
+
         row = {
             "identifier": identifier,
-            "library": lib_results[ver]["success"],
-            "shim": shim_results[ver]["success"],
+            "library": lib_res,
+            "shim": shim_res,
         }
 
         for suite in TEST_SUITES:
