@@ -917,6 +917,7 @@
               format = "other";
 
               propagatedBuildInputs = [
+                pyyaml
                 pandas
                 jinja2
                 pkgs.texliveFull
