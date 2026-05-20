@@ -50,6 +50,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.OutputStream;
+import java.io.FileOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigInteger;
 import java.nio.file.Files;
@@ -1043,8 +1045,23 @@ public class ECTesterStandalone {
         } else {
             System.out.println(params);
             EC_Curve curve = EC_Curve.fromSpec(params);
-            curve.writeCSV(System.out);
+
+            curve.writeCSV(getExportStream());
         }
+    }
+
+    private OutputStream getExportStream() {
+        OutputStream outStream = System.out;
+        String outputPath = cli.getOptionValue("export.output");
+
+        if ( outputPath != null ) {
+            try {
+                outStream = new FileOutputStream(outputPath);
+            } catch (IOException e) {
+                // default to System.out;
+            }
+        }
+        return outStream;
     }
 
     public static void main(String[] args) {
