@@ -1058,7 +1058,9 @@ public class ECTesterStandalone {
             try {
                 outStream = new FileOutputStream(outputPath);
             } catch (IOException e) {
-                // default to System.out;
+                System.err.println(
+                    String.format("Error: Default to the STDOUT as opening '%s' caused the exception '%s'", outputPath, e)
+                );
             }
         }
         return outStream;
